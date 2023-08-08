@@ -24,9 +24,19 @@
 ### 프로그래밍 요구 사항
 - 상속과 추상 메소드를 활용한다.
 - 위 요구사항을 if/else 절을 쓰지 않고 구현해야 한다.
-- 인터페이스를 적용해 구현한다.
 
 ### 구현 상세 요구 사항
-- Factory method 구현 - RentCompany#create()
-- 차를 추가하는 method 구현 - RentCompany#addCar()
-- 레포트를 생성하는 method 구현 - RentCompany#generateReport()
+
+- Car
+  - 자동차 인스턴스를 생성할 때의 숫자는 자동차로 여행할 거리를 의미한다.
+  - 구현해야 할 abstract method
+    - 자동차 연비 값 제공 #getDistancePerLiter()
+    - 자동차 여행 거리 #getTripDistance()
+    - 자동차 이름 제공 #getName()
+  - 구현해야 할 public method
+    - 해당 차량의 레포트 제공 #generateReport()
+
+- RentCompany
+  - Factory method 구현 - create()
+  - 차를 추가하는 method 구현 - addCar()
+  - 레포트를 생성하는 method 구현 - generateReport()
