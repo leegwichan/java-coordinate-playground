@@ -71,7 +71,7 @@ class InputViewTest {
 
         @DisplayName("형식에 맞춰 입력받지 못한 경우, 예외를 발생시킨다")
         @ParameterizedTest
-        @CsvSource({"' '"})
+        @CsvSource(value = {"' '", "(ten,10)-(14,six)", "(,)(,)"}, delimiter = '+')
         void inputPointsTest_whenNotFormatMatched_throwException(String message) {
             SpyPrinter printer = new SpyPrinter();
             Reader reader = new MockReader(message);
@@ -79,21 +79,21 @@ class InputViewTest {
 
             assertThatThrownBy(() -> inputView.inputPoints())
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage("좌표 형식이 일치하지 않습니다");
+                    .hasMessage("좌표 입력 형식이 일치하지 않습니다");
         }
 
-//        @DisplayName("형식에 맞춰 좌표 2개를 입력받을 수 있다")
-//        @Test
-//        void inputPointsTest_whenInput2Points() {
-//            String inputMessage = "(10,10)-(14,16)";
-//            Reader reader = new MockReader(inputMessage);
-//            InputView inputView = InputView.of(reader, new SpyPrinter());
-//            PointsDto expect = PointsDto.of(PointDto.of(10, 10), PointDto.of(14, 16));
-//
-//            PointsDto actual = inputView.inputPoints();
-//
-//            assertThat(actual).usingRecursiveComparison().isEqualTo(expect);
-//        }
+        @DisplayName("형식에 맞춰 좌표 2개를 입력받을 수 있다")
+        @Test
+        void inputPointsTest_whenInput2Points() {
+            String inputMessage = "(10,10)-(14,16)";
+            Reader reader = new MockReader(inputMessage);
+            InputView inputView = InputView.of(reader, new SpyPrinter());
+            PointsDto expect = PointsDto.of(PointDto.of(10, 10), PointDto.of(14, 16));
+
+            PointsDto actual = inputView.inputPoints();
+
+            assertThat(actual).usingRecursiveComparison().isEqualTo(expect);
+        }
 
     }
 }
