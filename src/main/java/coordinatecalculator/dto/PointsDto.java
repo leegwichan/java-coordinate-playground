@@ -10,7 +10,15 @@ public final class PointsDto {
         this.points = List.copyOf(points);
     }
 
-    public PointsDto of(List<PointDto> points) {
+    private PointsDto(PointDto[] points) {
+        this.points = List.of(points);
+    }
+
+    public static PointsDto of(List<PointDto> points) {
+        return new PointsDto(points);
+    }
+
+    public static PointsDto of(PointDto... points) {
         return new PointsDto(points);
     }
 
