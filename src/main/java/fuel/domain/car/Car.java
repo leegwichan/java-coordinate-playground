@@ -1,8 +1,11 @@
 package fuel.domain.car;
 
+import java.text.DecimalFormat;
+
 public abstract class Car {
 
-    private static final String REPORT_FORMAT = "%s : %f리터";
+    private static final DecimalFormat DOUBLE_FORMAT = new DecimalFormat("########.###");
+    private static final String REPORT_FORMAT = "%s : %s리터%n";
 
     abstract double getDistancePerLiter();
 
@@ -14,7 +17,8 @@ public abstract class Car {
         return String.format(REPORT_FORMAT, getName(), getChargeQuantity());
     }
 
-    private double getChargeQuantity() {
-        return getTripDistance() / getDistancePerLiter();
+    private String getChargeQuantity() {
+        double chargeQuantity = getTripDistance() / getDistancePerLiter();
+        return DOUBLE_FORMAT.format(chargeQuantity);
     }
 }
