@@ -17,7 +17,9 @@ public final class Point {
     }
 
     public double calculateDistance(Point point) {
-        return Math.sqrt(Math.pow(this.x - point.x, 2) + Math.pow(this.y - point.y, 2));
+        int xDifference = this.x - point.x;
+        int yDifference = this.y - point.y;
+        return Math.sqrt(Math.pow(xDifference, 2) + Math.pow(yDifference, 2));
     }
 
     @Override
