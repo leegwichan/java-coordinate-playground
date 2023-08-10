@@ -25,6 +25,7 @@ public final class OutputView {
             = "  +ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ" + LINE_SEPARATOR
             + " 0    2   4   6   8   10  12  14  16  18  20  22  24" + LINE_SEPARATOR;
 
+    private static final String LENGTH_FORMAT = "두 점 사이의 거리는 %f";
 
     private final Printer printer;
 
@@ -46,6 +47,11 @@ public final class OutputView {
                 .map(yValue -> MIN_COORDINATE_RANGE + MAX_COORDINATE_RANGE - yValue)
                 .mapToObj(yValue -> getCoordinateLine(yValue, points))
                 .collect(joining()).concat(X_AXIS);
+        printer.print(result);
+    }
+
+    public void printLength(double length) {
+        String result = String.format(LENGTH_FORMAT, length);
         printer.print(result);
     }
 

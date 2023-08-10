@@ -133,4 +133,18 @@ class OutputViewTest {
                     + " 0    2   4   6   8   10  12  14  16  18  20  22  24" + LINE_SEPARATOR;
         }
     }
+
+    @DisplayName("거리를 출력할 수 있다")
+    @ParameterizedTest
+    @CsvSource({"1.4", "2.1803", "1.1412"})
+    void printDistanceTest(double length) {
+        SpyPrinter printer = new SpyPrinter();
+        OutputView outputView = OutputView.of(printer);
+        String expected = String.format("두 점 사이의 거리는 %f", length);
+
+        outputView.printLength(length);
+
+        assertThat(printer.getPrintedMessage()).isEqualTo(expected);
+    }
+
 }
