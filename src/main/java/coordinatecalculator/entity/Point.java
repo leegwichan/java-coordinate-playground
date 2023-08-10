@@ -16,6 +16,10 @@ public final class Point {
         return new Point(x, y);
     }
 
+    public double calculateDistance(Point point) {
+        return Math.sqrt(Math.pow(this.x - point.x, 2) + Math.pow(this.y - point.y, 2));
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
