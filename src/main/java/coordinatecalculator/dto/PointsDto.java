@@ -25,4 +25,8 @@ public final class PointsDto {
     public List<PointDto> getPoints() {
         return points;
     }
+
+    public int size() {
+        return points.size();
+    }
 }
