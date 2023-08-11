@@ -153,7 +153,7 @@ class OutputViewTest {
         SpyPrinter printer = new SpyPrinter();
         OutputView outputView = OutputView.of(printer);
         Exception exception = new IllegalArgumentException("예외 메세지 입니다");
-        String expected = "[ERROR] 예외 메세지 입니다";
+        String expected = "[ERROR] 예외 메세지 입니다\n";
 
         outputView.print(exception);
 
