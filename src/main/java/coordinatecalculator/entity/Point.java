@@ -22,6 +22,14 @@ public final class Point {
         return Math.sqrt(Math.pow(xDifference, 2) + Math.pow(yDifference, 2));
     }
 
+    public int calculateXDifference(Point point) {
+        return this.x - point.x;
+    }
+
+    public int calculateYDifference(Point point) {
+        return this.y - point.y;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

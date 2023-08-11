@@ -27,6 +27,35 @@ class PointTest {
         }
     }
 
+    @DisplayName("x 좌표, y 좌표 차이를 알 수 있다")
+    @Nested
+    class DifferenceTest {
+
+        @DisplayName("x 좌표의 차이를 알 수 있다")
+        @ParameterizedTest(name = "(10,10)과 ({0},{1}) 사이의 x좌표 차이는 {2}이다")
+        @CsvSource({"4,5,6", "10,13,0", "15,11,-5", "10,10,0"})
+        void calculateXDifferenceTest(int x, int y, double expected) {
+            Point point1 = Point.of(10, 10);
+            Point point2 = Point.of(x, y);
+
+            double actual = point1.calculateXDifference(point2);
+
+            assertThat(actual).isEqualTo(expected);
+        }
+
+        @DisplayName("y 좌표의 차이를 알 수 있다")
+        @ParameterizedTest(name = "(10,10)과 ({0},{1}) 사이의 y좌표 차이는 {2}이다")
+        @CsvSource({"4,5,5", "13,10,0", "15,11,-1", "10,10,0"})
+        void calculateYDifferenceTest(int x, int y, double expected) {
+            Point point1 = Point.of(10, 10);
+            Point point2 = Point.of(x, y);
+
+            double actual = point1.calculateYDifference(point2);
+
+            assertThat(actual).isEqualTo(expected);
+        }
+    }
+
     @DisplayName("동치를 판단할 수 있다")
     @Nested
     class EqualTest {
