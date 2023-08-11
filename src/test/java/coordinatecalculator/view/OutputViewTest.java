@@ -147,4 +147,16 @@ class OutputViewTest {
         assertThat(printer.getPrintedMessage()).isEqualTo(expected);
     }
 
+    @DisplayName("예외 메세지를 출력할 수 있다")
+    @Test
+    void printErrorTest() {
+        SpyPrinter printer = new SpyPrinter();
+        OutputView outputView = OutputView.of(printer);
+        Exception exception = new IllegalArgumentException("예외 메세지 입니다");
+        String expected = "[ERROR] 예외 메세지 입니다";
+
+        outputView.print(exception);
+
+        assertThat(printer.getPrintedMessage()).isEqualTo(expected);
+    }
 }

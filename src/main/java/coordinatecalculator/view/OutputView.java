@@ -26,7 +26,7 @@ public final class OutputView {
             + " 0    2   4   6   8   10  12  14  16  18  20  22  24" + LINE_SEPARATOR;
 
     private static final String LENGTH_FORMAT = "두 점 사이의 거리는 %f";
-
+    private static final String ERROR_PREFIX = "[ERROR] ";
     private final Printer printer;
 
     private OutputView(Printer printer) {
@@ -53,6 +53,11 @@ public final class OutputView {
     public void printLength(double length) {
         String result = String.format(LENGTH_FORMAT, length);
         printer.print(result);
+    }
+
+    public void print(Exception e) {
+        String message = ERROR_PREFIX.concat(e.getMessage());
+        printer.print(message);
     }
 
     private void validate(PointsDto points) {
