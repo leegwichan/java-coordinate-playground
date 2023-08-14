@@ -1,7 +1,9 @@
 package coordinatecalculator.entity;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.offset;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -51,6 +53,47 @@ class TriangleTest {
             List<Point> points = List.of(Point.of(1, 2), Point.of(3, 4), Point.of(5, 6));
 
             assertThatCode(() -> Triangle.of(points)).doesNotThrowAnyException();
+        }
+    }
+
+    @DisplayName("삼각형의 넓이를 구할 수 있다")
+    @Nested
+    class AreaTest {
+
+        @DisplayName("(1,1), (1,21), (7,11)의 넓이는 60이다")
+        @Test
+        void calculateAreaTest1() {
+            List<Point> points = List.of(Point.of(1, 1), Point.of(1, 21), Point.of(7, 11));
+            Triangle triangle = Triangle.of(points);
+            double expected = 60;
+
+            double actual = triangle.calculateArea();
+
+            assertThat(actual).isEqualTo(expected, offset(0.001));
+        }
+
+        @DisplayName("(10,10) (14,15) (20,8)의 넓이는 29이다")
+        @Test
+        void calculateAreaTest2() {
+            List<Point> points = List.of(Point.of(10, 10), Point.of(14, 15), Point.of(20, 8));
+            Triangle triangle = Triangle.of(points);
+            double expected = 29;
+
+            double actual = triangle.calculateArea();
+
+            assertThat(actual).isEqualTo(expected, offset(0.001));
+        }
+
+        @DisplayName("(11,20), (13,20), (20,16)의 넓이는 4이다")
+        @Test
+        void calculateAreaTest3() {
+            List<Point> points = List.of(Point.of(11, 20), Point.of(13, 20), Point.of(20, 16));
+            Triangle triangle = Triangle.of(points);
+            double expected = 4;
+
+            double actual = triangle.calculateArea();
+
+            assertThat(actual).isEqualTo(expected, offset(0.001));
         }
     }
 }

@@ -27,6 +27,18 @@ public final class Triangle implements PlaneShape {
 
     @Override
     public double calculateArea() {
-        return 0;
+        double length1 = points.get(0).calculateDistance(points.get(1));
+        double length2 = points.get(1).calculateDistance(points.get(2));
+        double length3 = points.get(2).calculateDistance(points.get(0));
+        return calculateArea(length1, length2, length3);
+    }
+
+    private double calculateArea(double length1, double length2, double length3) {
+        double a = length1 + length2 + length3;
+        double b = - length1 + length2 + length3;
+        double c = length1 - length2 + length3;
+        double d = length1 + length2 - length3;
+
+        return Math.sqrt(a * b * c * d) / 4; // 헤론의 공식을 이용
     }
 }
