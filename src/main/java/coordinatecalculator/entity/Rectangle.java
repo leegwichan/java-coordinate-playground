@@ -66,6 +66,8 @@ public final class Rectangle implements PlaneShape {
 
     @Override
     public double calculateArea() {
-        return 0;
+        int width = rightTop.calculateXDifference(leftBottom);
+        int height = rightTop.calculateYDifference(leftBottom);
+        return (width * height);
     }
 }
