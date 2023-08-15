@@ -9,6 +9,7 @@ import static org.mockito.Mockito.when;
 import coordinatecalculator.dto.ShapeResultDto;
 import coordinatecalculator.entity.PlaneShape;
 import coordinatecalculator.entity.Rectangle;
+import coordinatecalculator.entity.Triangle;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -58,23 +59,30 @@ class OutputViewTest {
     @Nested
     class ShapePrintTest {
 
-        @Mock
-        private CoordinateView coordinateView;
-
-        @InjectMocks
-        private OutputView outputView;
-
-        @DisplayName("좌표계 내용을 출력한다")
+        @DisplayName("직사각형의 넓이를 출력할 수 있다")
         @Test
-        void printTest_checkPrintingCoordinate() {
+        void printTest_Rectangle() {
             SpyPrinter printer = new SpyPrinter();
             OutputView outputView = OutputView.of(printer);
-            when(coordinateView.getCoordinateView(any())).thenReturn("COORDINATE_RESULT");
             ShapeResultDto dto = getShapeResultDto(Rectangle.class, 5.00);
+            String expected = String.format("사각형 넓이는 %f", 5.00);
 
             outputView.print(dto);
 
-            assertThat(printer.getPrintedMessage()).contains("COORDINATE_RESULT");
+            assertThat(printer.getPrintedMessage()).contains(expected);
+        }
+
+        @DisplayName("삼각형의 넓이를 출력할 수 있다")
+        @Test
+        void printTest_Triangle() {
+            SpyPrinter printer = new SpyPrinter();
+            OutputView outputView = OutputView.of(printer);
+            ShapeResultDto dto = getShapeResultDto(Triangle.class, 5.00);
+            String expected = String.format("삼각형의 넓이는 %f", 5.00);
+
+            outputView.print(dto);
+
+            assertThat(printer.getPrintedMessage()).contains(expected);
         }
 
         ShapeResultDto getShapeResultDto(Class<? extends PlaneShape> shape, double area) {
