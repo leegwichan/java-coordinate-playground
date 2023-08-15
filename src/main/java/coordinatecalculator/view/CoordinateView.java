@@ -22,10 +22,6 @@ final class CoordinateView {
             = "  +ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ" + LINE_SEPARATOR
             + " 0    2   4   6   8   10  12  14  16  18  20  22  24" + LINE_SEPARATOR;
 
-    private static final String LENGTH_FORMAT = "두 점 사이의 거리는 %f";
-    private static final String RECTANGLE_AREA_FORMAT = "사각형 넓이는 %f";
-    private static final String ERROR_FORMAT = "[ERROR] %s" + LINE_SEPARATOR;
-
     CoordinateView() {
     }
 
