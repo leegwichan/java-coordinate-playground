@@ -1,6 +1,7 @@
 package coordinatecalculator.controller;
 
 import coordinatecalculator.dto.PointsDto;
+import coordinatecalculator.dto.ShapeDto;
 import coordinatecalculator.dto.ShapeResultDto;
 import coordinatecalculator.entity.PlaneShape;
 import coordinatecalculator.entity.Point;
@@ -36,7 +37,7 @@ public final class CoordinateCalculatorController extends ControllerHelper {
 
         ShapeResultDto dto = ShapeResultDto.builder()
                 .points(pointsDto)
-                .shape(shape.getClass())
+                .shape(ShapeDto.toDto(shape))
                 .area(shape.calculateArea()).build();
         outputView.print(dto);
     }

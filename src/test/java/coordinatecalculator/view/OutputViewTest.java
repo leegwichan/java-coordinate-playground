@@ -6,6 +6,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
+import coordinatecalculator.dto.ShapeDto;
 import coordinatecalculator.dto.ShapeResultDto;
 import coordinatecalculator.entity.PlaneShape;
 import coordinatecalculator.entity.Rectangle;
@@ -42,29 +43,16 @@ class OutputViewTest {
         }
     }
 
-    @DisplayName("거리를 출력할 수 있다")
-    @ParameterizedTest
-    @CsvSource({"1.4", "2.1803", "1.1412"})
-    void printDistanceTest(double length) {
-        SpyPrinter printer = new SpyPrinter();
-        OutputView outputView = OutputView.of(printer);
-        String expected = String.format("두 점 사이의 거리는 %f", length);
-
-        outputView.printLength(length);
-
-        assertThat(printer.getPrintedMessage()).isEqualTo(expected);
-    }
-
     @DisplayName("도형 출력 테스트")
     @Nested
     class ShapePrintTest {
 
-        @DisplayName("직사각형의 넓이를 출력할 수 있다")
+        @DisplayName("사각형의 넓이를 출력할 수 있다")
         @Test
         void printTest_Rectangle() {
             SpyPrinter printer = new SpyPrinter();
             OutputView outputView = OutputView.of(printer);
-            ShapeResultDto dto = getShapeResultDto(Rectangle.class, 5.00);
+            ShapeResultDto dto = getShapeResultDto(ShapeDto.SQUARE, 5.00);
             String expected = String.format("사각형 넓이는 %f", 5.00);
 
             outputView.print(dto);
@@ -77,7 +65,7 @@ class OutputViewTest {
         void printTest_Triangle() {
             SpyPrinter printer = new SpyPrinter();
             OutputView outputView = OutputView.of(printer);
-            ShapeResultDto dto = getShapeResultDto(Triangle.class, 5.00);
+            ShapeResultDto dto = getShapeResultDto(ShapeDto.TRIANGLE, 5.00);
             String expected = String.format("삼각형의 넓이는 %f", 5.00);
 
             outputView.print(dto);
@@ -85,7 +73,7 @@ class OutputViewTest {
             assertThat(printer.getPrintedMessage()).contains(expected);
         }
 
-        ShapeResultDto getShapeResultDto(Class<? extends PlaneShape> shape, double area) {
+        ShapeResultDto getShapeResultDto(ShapeDto shape, double area) {
             PointsDto points = PointsDto.of(PointDto.of(1, 2), PointDto.of(3, 4), PointDto.of(5, 6));
             return ShapeResultDto.builder()
                     .points(points).shape(shape).area(area).build();
