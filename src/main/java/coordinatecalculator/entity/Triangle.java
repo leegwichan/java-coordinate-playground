@@ -3,7 +3,7 @@ package coordinatecalculator.entity;
 import java.util.List;
 import java.util.Objects;
 
-public final class Triangle implements PlaneShape {
+public final class Triangle extends PlaneShape {
 
     private List<Point> points;
 
