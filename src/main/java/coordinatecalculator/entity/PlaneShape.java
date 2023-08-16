@@ -8,7 +8,7 @@ import java.util.Optional;
 public abstract class PlaneShape {
 
     private static final Map<Integer, PlaneShapeCreator> CREATOR_BY_POINT_SIZE
-            = Map.of(3, Triangle::of, 4, Rectangle::of);
+            = Map.of(2, Line::of, 3, Triangle::of, 4, Rectangle::of);
 
     public static PlaneShape of(List<Point> points) {
         Objects.requireNonNull(points);

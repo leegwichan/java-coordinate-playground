@@ -32,29 +32,12 @@ public final class CoordinateCalculatorController extends ControllerHelper {
 
     private void runMainProgram() {
         PointsDto pointsDto = inputView.inputPoints();
-
-        if (pointsDto.size() == 2) {
-            printStraight(pointsDto);
-            return;
-        }
-        printShape(pointsDto);
-    }
-
-    private void printStraight(PointsDto pointsDto) {
-        List<Point> points = toPoints(pointsDto);
-
-        double length = points.get(0).calculateDistance(points.get(1));
-        outputView.printCoordinate(pointsDto);
-        outputView.printLength(length);
-    }
-
-    private void printShape(PointsDto pointsDto) {
         PlaneShape shape = PlaneShape.of(toPoints(pointsDto));
+
         ShapeResultDto dto = ShapeResultDto.builder()
                 .points(pointsDto)
                 .shape(shape.getClass())
                 .area(shape.calculateArea()).build();
-
         outputView.print(dto);
     }
 
