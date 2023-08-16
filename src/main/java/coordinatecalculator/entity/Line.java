@@ -20,6 +20,8 @@ public final class Line extends PlaneShape {
 
     @Override
     public double calculateArea() {
-        return 0;
+        Point point1 = points.get(0);
+        Point point2 = points.get(1);
+        return point1.calculateDistance(point2);
     }
 }

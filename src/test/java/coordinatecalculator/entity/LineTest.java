@@ -1,11 +1,15 @@
 package coordinatecalculator.entity;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.offset;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import java.util.List;
 
 class LineTest {
@@ -51,5 +55,18 @@ class LineTest {
 
             assertThatCode(() -> Line.of(points)).doesNotThrowAnyException();
         }
+    }
+
+    @DisplayName("두 점사이의 거리를 측정할 수 있다")
+    @ParameterizedTest(name = "(1, 1)과 ({0}, {1}) 사이의 거리는 {2}이다")
+    @CsvSource({"1,11,10", "11,1,10", "2,2,1.414", "11,6,11.18033"})
+    void calculateAreaTest(int x2, int y2, double expected) {
+        Point point1 = Point.of(1, 1);
+        Point point2 = Point.of(x2, y2);
+        Line line = Line.of(List.of(point1, point2));
+
+        double actual = line.calculateArea();
+
+        assertThat(actual).isEqualTo(expected, offset(0.001));
     }
 }
