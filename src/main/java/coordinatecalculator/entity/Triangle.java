@@ -35,7 +35,7 @@ public final class Triangle extends PlaneShape {
 
     private double calculateArea(double length1, double length2, double length3) {
         double a = length1 + length2 + length3;
-        double b = - length1 + length2 + length3;
+        double b = -length1 + length2 + length3;
         double c = length1 - length2 + length3;
         double d = length1 + length2 - length3;
 
