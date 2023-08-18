@@ -1,15 +1,14 @@
 package coordinatecalculator.dto;
 
-import coordinatecalculator.entity.PlaneShape;
 import java.util.Objects;
 
 public final class ShapeResultDto {
 
     private final PointsDto points;
     private final double area;
-    private final Class<? extends PlaneShape> shape;
+    private final ShapeDto shape;
 
-    private ShapeResultDto(PointsDto points, double area, Class<? extends PlaneShape> shape) {
+    private ShapeResultDto(PointsDto points, double area, ShapeDto shape) {
         if (area < 0) {
             throw new IllegalArgumentException();
         }
@@ -31,14 +30,14 @@ public final class ShapeResultDto {
         return area;
     }
 
-    public Class<? extends PlaneShape> getShape() {
+    public ShapeDto getShape() {
         return shape;
     }
 
     public static class Builder {
         private PointsDto points;
         private double area;
-        private Class<? extends PlaneShape> shape;
+        private ShapeDto shape;
 
         public Builder points(PointsDto points) {
             this.points = points;
@@ -50,7 +49,7 @@ public final class ShapeResultDto {
             return this;
         }
 
-        public Builder shape(Class<? extends PlaneShape> shape) {
+        public Builder shape(ShapeDto shape) {
             this.shape = shape;
             return this;
         }

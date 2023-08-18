@@ -3,7 +3,7 @@ package coordinatecalculator.entity;
 import java.util.List;
 import java.util.Objects;
 
-public final class Rectangle implements PlaneShape {
+public final class Rectangle extends PlaneShape {
 
     private final Point leftBottom;
     private final Point rightTop;
