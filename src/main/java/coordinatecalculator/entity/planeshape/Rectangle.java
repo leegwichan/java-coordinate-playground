@@ -4,7 +4,7 @@ import coordinatecalculator.entity.Point;
 import java.util.List;
 import java.util.Objects;
 
-public final class Rectangle extends PlaneShape {
+public final class Rectangle implements PlaneShape {
 
     private final Point leftBottom;
     private final Point rightTop;

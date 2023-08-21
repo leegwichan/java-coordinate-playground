@@ -1,6 +1,6 @@
 package coordinatecalculator.entity.planeshape;
 
-public abstract class PlaneShape {
+public interface PlaneShape {
 
-    public abstract double calculateArea();
+    double calculateArea();
 }

@@ -3,7 +3,7 @@ package coordinatecalculator.entity.planeshape;
 import coordinatecalculator.entity.Point;
 import java.util.List;
 
-public final class Line extends PlaneShape {
+public final class Line implements PlaneShape {
 
     private final List<Point> points;
 
