@@ -1,10 +1,12 @@
-package coordinatecalculator.entity;
+package coordinatecalculator.entity.planeshape;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.Assertions.offset;
 
+import coordinatecalculator.entity.Point;
+import coordinatecalculator.entity.planeshape.Line;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;

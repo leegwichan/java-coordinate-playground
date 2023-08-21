@@ -1,9 +1,9 @@
 package coordinatecalculator.dto;
 
-import coordinatecalculator.entity.Line;
-import coordinatecalculator.entity.PlaneShape;
-import coordinatecalculator.entity.Rectangle;
-import coordinatecalculator.entity.Triangle;
+import coordinatecalculator.entity.planeshape.Line;
+import coordinatecalculator.entity.planeshape.PlaneShape;
+import coordinatecalculator.entity.planeshape.Rectangle;
+import coordinatecalculator.entity.planeshape.Triangle;
 import java.util.Map;
 import java.util.Optional;
 

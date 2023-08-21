@@ -1,5 +1,6 @@
-package coordinatecalculator.entity;
+package coordinatecalculator.entity.planeshape;
 
+import coordinatecalculator.entity.Point;
 import java.util.List;
 import java.util.Objects;
 

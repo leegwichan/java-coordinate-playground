@@ -1,5 +1,6 @@
-package coordinatecalculator.entity;
+package coordinatecalculator.entity.planeshape;
 
+import coordinatecalculator.entity.Point;
 import java.util.List;
 
 public final class Line extends PlaneShape {
