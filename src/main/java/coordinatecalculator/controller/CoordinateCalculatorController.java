@@ -3,6 +3,7 @@ package coordinatecalculator.controller;
 import coordinatecalculator.dto.PointsDto;
 import coordinatecalculator.dto.ShapeDto;
 import coordinatecalculator.dto.ShapeResultDto;
+import coordinatecalculator.entity.factory.PlaneShapeFactory;
 import coordinatecalculator.entity.planeshape.PlaneShape;
 import coordinatecalculator.entity.Point;
 import coordinatecalculator.view.InputView;
@@ -33,7 +34,7 @@ public final class CoordinateCalculatorController extends ControllerHelper {
 
     private void runMainProgram() {
         PointsDto pointsDto = inputView.inputPoints();
-        PlaneShape shape = PlaneShape.of(toPoints(pointsDto));
+        PlaneShape shape = PlaneShapeFactory.create(toPoints(pointsDto));
 
         ShapeResultDto dto = ShapeResultDto.builder()
                 .points(pointsDto)
